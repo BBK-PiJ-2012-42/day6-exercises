@@ -52,9 +52,16 @@ public class CirPatient {
         }
     }
 
-    public void deletePatient() {
-
-        System.out.println(this.name+" has been removed.");
+    public void deletePatient(CirPatient delPatient) {
+        if (this.nextPatient.equals(delPatient)) {
+            this.nextPatient = delPatient.nextPatient;
+            System.out.println(this.name+" has been removed.");
+            if (delPatient.equals(patientManager.patientListStart)) {
+                patientManager.patientListStart = this;
+            }
+        } else {
+            this.nextPatient.deletePatient(delPatient);
+        }
     }
     
 }
