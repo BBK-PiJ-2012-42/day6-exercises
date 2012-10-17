@@ -44,26 +44,31 @@ public class Patient {
                 this.nextPatient = newPatient;
                 // Finally set end of the list to the new patient.
                 patientManager.patientListEnd = newPatient;
+                System.out.println(newPatient.name+" has been added.");
             } else {
                 this.nextPatient.addPatient(newPatient);
+                
             }
     }
     
-    private void joinUp() {
-        // Removes self from the list by connecting the previous and
-        // next patients to each other.
-        this.nextPatient.prevPatient = this.prevPatient;
-        this.prevPatient.nextPatient = this.nextPatient;
-    }
 
     public void deletePatient() {
-        // Check to see if patient is at the end or begging of the list.
+        // Check to see if patient is at the end or start of the list.
+        // Could have checked if next or previous was void but used reference
+        // to manager instead.
         if (this.equals(patientManager.patientListStart)) {
             patientManager.patientListStart = this.nextPatient;
+            this.nextPatient.prevPatient = this.prevPatient;
         } else if (this.equals(patientManager.patientListEnd)) {
             patientManager.patientListEnd = this.prevPatient;
+            this.prevPatient.nextPatient = this.nextPatient;
+        } else {
+            // Removes self from the list by connecting the previous and
+            // next patients to each other.
+            this.nextPatient.prevPatient = this.prevPatient;
+            this.prevPatient.nextPatient = this.nextPatient;
         }
-        this.joinUp();
+        System.out.println(this.name+" has been removed.");
     }
     
     public void printPatient() {
@@ -87,7 +92,7 @@ public class Patient {
         // printing the previous patient details recursively.
         this.printPatient();
         if (this.prevPatient == null) {    
-            System.out.println("Begining of patient list.");            
+            System.out.println("Start of patient list.");            
         } else {
             this.prevPatient.backPrint();
         }
