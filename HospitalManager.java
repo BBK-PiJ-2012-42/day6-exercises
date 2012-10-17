@@ -10,20 +10,26 @@ package day6;
  */
 public class HospitalManager {
     private Patient patientListStart = null;
+    // Make patientListEnd public so it can be accessed by Patient objects.
+    public Patient patientListEnd = null;
     
     public void launch() {
-//        Patient firstPatient = new Patient("John", 33, "Tuberculosis");
-//        patientListStart = firstPatient;
-        patientListStart = new Patient("John", 33, "Tuberculosis");
-        patientListStart.addPatient(new Patient("Bill", 33, "Tuberculosis"));
-        patientListStart.addPatient(new Patient("Jim", 23, "Tuberculosis"));
-        patientListStart.addPatient(new Patient("Kim", 13, "Meningitis"));
-        patientListStart.addPatient(new Patient("Sally", 27, "Tuberculosis"));
-        patientListStart.addPatient(new Patient("Luke", 54, "Tuberculosis"));
-        patientListStart.addPatient(new Patient("Sue", 34, "Tuberculosis"));
-        patientListStart.addPatient(new Patient("Ralph", 33, "Meningitis"));
-        patientListStart.addPatient(new Patient("Ruby", 21, "Tuberculosis"));
-        patientListStart.addPatient(new Patient("Alice", 19, "Tuberculosis"));
+        // Patinets are added directly to the data structure without names
+        // because we only access them through the list methods.
+        patientListStart = new Patient("John", 33, "Tuberculosis", this);
+        patientListStart.addPatient(new Patient("Bill", 33, "Tuberculosis", this));
+        patientListStart.addPatient(new Patient("Jim", 23, "Tuberculosis", this));
+        patientListStart.addPatient(new Patient("Kim", 13, "Meningitis", this));
+        patientListStart.addPatient(new Patient("Sally", 27, "Tuberculosis", this));
+        patientListStart.addPatient(new Patient("Luke", 54, "Tuberculosis", this));
+        patientListStart.addPatient(new Patient("Sue", 34, "Tuberculosis", this));
+        patientListStart.addPatient(new Patient("Ralph", 33, "Meningitis", this));
+        patientListStart.addPatient(new Patient("Ruby", 21, "Tuberculosis", this));
+        patientListStart.addPatient(new Patient("Alice", 19, "Tuberculosis", this));
+        
+        patientListStart.forwardPrint();
+        
+        patientListEnd.backPrint();
     }
     
     public static void main(String[] args) {
