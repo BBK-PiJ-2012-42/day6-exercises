@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package day6;
 
 /**
@@ -12,13 +8,12 @@ public class MarkInput {
     
     
     private void addMarks() {
-        
-        int mark = 0,
-            count = 0,
-            distinctions = 0,
-            passes = 0,
-            fails = 0,
-            invalid = 0;
+        int mark = 0;
+        int count = 0;
+        int distinctions = 0;
+        int passes = 0;
+        int fails = 0;
+        int invalid = 0;
         //String markString = "0";
         do {
             System.out.print("Input a mark: ");
