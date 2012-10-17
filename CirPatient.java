@@ -38,7 +38,7 @@ public class CirPatient {
     }
 
     public void printPatient() {
-        System.out.println(name+"\t"+age+"\t"+illness);
+        System.out.println(name+"\t"+age+"\t"+illness+"\t"+this.nextPatient.name);
     }
     
     public void forwardPrint() {
@@ -54,8 +54,8 @@ public class CirPatient {
 
     public void deletePatient(CirPatient delPatient) {
         if (this.nextPatient.equals(delPatient)) {
-            this.nextPatient = delPatient.nextPatient;
-            System.out.println(this.name+" has been removed.");
+            this.nextPatient = nextPatient.nextPatient;
+            System.out.println(delPatient.name+" has been removed.");
             if (delPatient.equals(patientManager.patientListStart)) {
                 patientManager.patientListStart = this;
             }
