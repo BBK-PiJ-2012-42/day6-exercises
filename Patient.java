@@ -48,16 +48,22 @@ public class Patient {
                 this.nextPatient.addPatient(newPatient);
             }
     }
+    
+    private void joinUp() {
+        // Removes self from the list by connecting the previous and
+        // next patients to each other.
+        this.nextPatient.prevPatient = this.prevPatient;
+        this.prevPatient.nextPatient = this.nextPatient;
+    }
 
-    public boolean deletePatient(Patient patient) {
-        if (this.nextPatient == null) {
-            return false;
-        } else if (this.nextPatient.name.equals(patient.name)) {
-            this.nextPatient = nextPatient.nextPatient;
-            return true;
-        } else {
-            return this.nextPatient.deletePatient(patient);
+    public void deletePatient() {
+        // Check to see if patient is at the end or begging of the list.
+        if (this.equals(patientManager.patientListStart)) {
+            patientManager.patientListStart = this.nextPatient;
+        } else if (this.equals(patientManager.patientListEnd)) {
+            patientManager.patientListEnd = this.prevPatient;
         }
+        this.joinUp();
     }
     
     public void printPatient() {
@@ -76,7 +82,6 @@ public class Patient {
     }
     
     
-    
     public void backPrint() {
         // Prints patient details and then goes backward in the list
         // printing the previous patient details recursively.
@@ -87,5 +92,6 @@ public class Patient {
             this.prevPatient.backPrint();
         }
     }
+    
     
 }
