@@ -32,6 +32,12 @@ public class CirHospitalManager {
         patientListStart.addPatient(ten);
         
         patientListStart.forwardPrint();
+        
+        patientListStart.deletePatient(one);
+        //patientListStart.deletePatient(five);
+        //patientListStart.deletePatient(ten);
+        
+        patientListStart.forwardPrint();
     }
     
     public static void main(String[] args) {
