@@ -6,7 +6,11 @@ package day6;
 
 /**
  *
+<<<<<<< HEAD
  * @author tnealo01
+=======
+ * @author tom
+>>>>>>> 130d14640dc3b3491df123d80c8bcf01dea0230b
  */
 public class Day6 {
 
